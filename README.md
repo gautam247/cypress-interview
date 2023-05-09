@@ -1,8 +1,3 @@
-## OpenSpace SDET Takehome Coding Challenge
-
-This challenge is a part of the hiring process at OpenSpace for the Software Development Engineer in Test position. 
-
-![cypress](https://i.imgur.com/1oavJOB.png)
 
 ### The Challenge
 
