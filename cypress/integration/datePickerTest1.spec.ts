@@ -1,3 +1,13 @@
+/*
+Assertions:-
+1. As a user, I should be able to see the date picker after clicking on start date.
+2. As a user, I should be able to see the date picker after clicking on end date.
+3. As a user, I can see no date should be selected already as we visit the page.
+4. As a user, I can type a date in the field and verifying the same
+5. As a user, I can type date into fields and check if the date not included is not selected'
+6. As a user, I cannot select end date that is before the start date
+*/
+
 describe("Date picker Test by weguide",()=> {
     const startDate = Cypress.dayjs().format('MM/DD/YYYY');
     const endDate = Cypress.dayjs().add(5, 'days').format('MM/DD/YYYY');
@@ -12,6 +22,7 @@ describe("Date picker Test by weguide",()=> {
     beforeEach(() => {
         cy.visit("/");
     });
+
     it("As a user, I should be able to see the date picker after clicking on start date", ()=>{
         
         cy.get('#mui-4').click()
@@ -27,13 +38,12 @@ describe("Date picker Test by weguide",()=> {
         cy.get('#mui-5').should('have.value', '')
     })
 
-    it("As a user, I should be able to see the entered date in the field", ()=>{
+    it("As a user, I can type a date in the field and verifying the same", ()=>{
         cy.get('#mui-4').clear().type(startDate)
         cy.get('#mui-4').should('have.value', startDate)
     })
 
-    it('As a user, I can type date into start date and end date fields', ()=>{
-        cy.visit("/");
+    it('As a user, I can type date into fields and check if the date not included is not selected', ()=>{
         cy.get('#mui-4').clear().type(startDate).tab().type(endDate)
         cy.get('.css-1tape97').first().within(()=> {
             cy.get('button').contains(dateNotIncluded).should('have.class', outsideRangeClass).and('not.have.class', insideRangeClass )
