@@ -42,7 +42,6 @@ describe("Date picker Test by weguide",()=> {
     })
 
     it('As a user, I cannot select end date that is before the start date', () => {
-        cy.visit("/");
         cy.get('#mui-4').click()
         cy.get('.css-1tape97').first().within(()=> {
             cy.get('button').contains(todaysDay).click()
